@@ -17,6 +17,8 @@ def load_input():
             E_num=int(ls1[1])
         elif line[0]!="c":
             ls2=line.strip().replace(" ","")
-            print(ls2)
+            #print(ls2)
             E.append([int(ls2[0]), int(ls2[1])])
     return V, E_num, E
+
+print(load_input())
