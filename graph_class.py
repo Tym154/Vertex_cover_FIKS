@@ -3,10 +3,25 @@ class graph:
 
     # Adding a node to the nodes dictionary
     def add_node_to_dir(self, node_index, neighbour_nodes = []):
-        if node_index not in neighbour_nodes:
+        if node_index in neighbour_nodes:
+            raise Exception("Node cannot have itself as a neighbour")  
+        
+        if node_index not in self.nodes:
             self.nodes.update({node_index : neighbour_nodes})
+        elif node_index in self.nodes and len(neighbour_nodes) == 1:
+            self.nodes[node_index].append(neighbour_nodes)
         else:
-            raise Exception("Node cannot have itself as a neighbour")
+            for i in neighbour_nodes:
+                if i not in self.nodes[node_index]:
+                    self.nodes[node_index].append(i)
+
+    # Removing a node from a graph
+    def remove_node(self, node_index):
+        del self.nodes[node_index]
+
+        for i in self.nodes:
+            if node_index in self.nodes[i]:
+                self.nodes[i].remove(node_index)
         
     # Deleting all nodes that have no neighbours
     def clear_nodes_without_neighbours(self):
