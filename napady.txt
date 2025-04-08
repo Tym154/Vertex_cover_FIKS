@@ -1,0 +1,14 @@
+Plot
+V/s V/E=1/2
+E/s V=const
+
++ Vizual
+
+Overview problému
+..
+Něco si připravit
+..
+
+Typy řešení-ILP,BF
+
+

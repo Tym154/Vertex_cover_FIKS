@@ -3,9 +3,9 @@ import sys
 """ Načíta input, žádnej error handeling, musí se dát správný input
 aby fungoval správně, sry skillissue"""
 
-def load_input(file=None):
+def load_input(dir="input",file=None,):
     if file!=None:
-        with open(f"input/{file}","r") as f:
+        with open(f"{dir}/{file}","r") as f:
         
             input= f.readlines()
     else:
