@@ -17,11 +17,12 @@ def edge_brute_force_solve(k, edges, vertices, removed_vertices):
     if k == 0 and edges:
         return False
     
-    for remove_vertice in vertices:
-        new_edges = [edge for edge in edges if remove_vertice not in edge]
-        new_vertices = [vertice for vertice in vertices if vertice != remove_vertice]
+    edge = edges[0]
+    for i in edge:
+        new_edges = [e for e in edges if i not in e]
+        new_vertices = [v for v in vertices if v != i]
 
-        result = edge_brute_force_solve(k-1, new_edges, new_vertices, removed_vertices + [remove_vertice])
+        result = edge_brute_force_solve(k-1, new_edges, new_vertices, removed_vertices + [i])
 
         if result:
             return list(result)
