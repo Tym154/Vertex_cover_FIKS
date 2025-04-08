@@ -1,8 +1,6 @@
 import pulp
 
 
-
-
 def ILP(G):
 
     P = pulp.LpProblem("Vertex_cover_ILP", pulp.LpMinimize)
