@@ -14,7 +14,7 @@ class graph:
         for i in edges:
             self.add_edge(i)
                 
-    # Add vertice based on the edge
+    # Add vertice/s based on the edge
     def add_edge(self, edge = []):
         if len(edge) != 2:
             raise Exception("Path E needs to have precisely 2 elements")
@@ -75,4 +75,32 @@ class graph:
         for j in vertices_to_delete:
             del self.vertices[j]
             self.current_vertice_num -= 1
+
+    # Takes a list of vertices id and returns true if the set is possible verte cover, False otherwise
+    def is_vertex_cover(self, possible_cover, edges):
+        for edge in edges:
+            x,y = edge
+
+            if x not in possible_cover and y not in possible_cover:
+                return False
+        return True
+    
+    # Returns list of all edges
+    def get_edges(self):
+        seen = {}
+
+        for i in self.vertices:
+            seen[i] = []
+
+        edges = [[]]
+        for i in self.vertices:
+            for j in self.vertices[i]:
+                if j not in seen[i]:
+                    edges.append([i,j])
+                    seen[i].append(j)
+                    seen[j].append(i)
+
+        edges.remove([])
+
+        return edges
     
