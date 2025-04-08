@@ -8,4 +8,4 @@ def brute_force(input_graph : graph):
     for i in range(1, len(nodes) + 1):
         for sub in combinations(nodes, i):
             if input_graph.is_vertex_cover(sub, edges):
-                return set(sub)
+                return list(sub)
