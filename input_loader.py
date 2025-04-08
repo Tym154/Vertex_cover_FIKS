@@ -21,4 +21,4 @@ def load_input():
             E.append([int(ls2[0]), int(ls2[1])])
     return V, E_num, E
 
-print(load_input())
+#print(load_input())
