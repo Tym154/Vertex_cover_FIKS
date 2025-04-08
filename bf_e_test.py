@@ -1,4 +1,4 @@
-from algorithms.ILP import ILP
+from algorithms.edge_brute_force import edge_brute_force
 
 from infrastructure.graph_class import graph
 from infrastructure.input_loader import load_input
@@ -14,7 +14,8 @@ E_arr=[]
 runtime_arr=[]
 V_arr=[]
 
-dir_name="inputs/input_VT_shared"
+dir_name="inputs/input_ET_BF"
+
 dir = os.listdir(dir_name)
 
 sorted_dir=sorted(dir, key=get_num)
@@ -26,18 +27,18 @@ for file in sorted_dir:
 
     start = time.time()
      
-    removedV=ILP(this_is_a_graph.vertices)
-     
+    removedV=edge_brute_force(this_is_a_graph) 
     runtime=(time.time()-start)
+    
     
     E_arr.append(E_num)
     runtime_arr.append(runtime)
     V_arr.append(V)
     
     print(f"""
-          Problém-ILP V:{V}, E:{E_num}
+          Problém-BF V:{V}, E:{E_num}
           Doba běhu: {runtime},
-          ID oddělaných hran: {removedV}
+          ID oddělaných Vrcholů: {removedV}
           """)
     if runtime>=20:
         break
@@ -48,6 +49,3 @@ print(V_arr)
 print()
 print(runtime_arr)
     
-    
-    
-#
