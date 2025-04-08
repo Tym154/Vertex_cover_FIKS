@@ -1,7 +1,0 @@
-c This file describes a graph in td PACE2019 format with 6 vertices and 4 edges
-p td 6 4
-2 3
-3 2
-c this is a comment and will be ignored
-4 1
-4 6

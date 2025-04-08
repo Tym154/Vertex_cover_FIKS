@@ -2,14 +2,9 @@ import pulp
 
 
 
-#pulp_edges=[]
-G= {1:[2,3, 4],
-        2:[1,3, 4],
-        3:[1,4, 2],
-        4:[1,2]
-}
 
 def ILP(G):
+
     P = pulp.LpProblem("Vertex_cover_ILP", pulp.LpMinimize)
     X = {v: pulp.LpVariable(f'x_{v}', lowBound=0, cat='Integer') for v in G}
     for v, E in G.items():
@@ -22,10 +17,8 @@ def ILP(G):
             
             
             
-    P.solve()
-    print(P)
-    print(pulp.LpStatus[P.status])
-    print(pulp.value(P.objective))
-    for variable in P.variables():
-        print(f"{variable.name} = {variable.varValue}")
+    P.solve(pulp.PULP_CBC_CMD(msg=False))
+
+    removedV=[ int((variable.name)[2:]) for variable in P.variables() if variable.varValue==1]
+    return  removedV
         
