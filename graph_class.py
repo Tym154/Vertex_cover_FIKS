@@ -77,8 +77,7 @@ class graph:
             self.current_vertice_num -= 1
 
     # Takes a list of vertices id and returns true if the set is possible verte cover, False otherwise
-    def is_vertex_cover(self, possible_cover):
-        edges = self.get_edges()
+    def is_vertex_cover(self, possible_cover, edges):
         for edge in edges:
             x,y = edge
 
